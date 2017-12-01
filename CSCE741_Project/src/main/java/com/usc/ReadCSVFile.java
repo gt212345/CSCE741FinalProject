@@ -17,6 +17,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +28,7 @@ import com.usc.model.Course;
 @Component
 public class ReadCSVFile {	
 	@Autowired
-	private ResourceLoader resourceLoader;	
+	public ResourceLoader resourceLoader;	
 	private String []files={"BMEN","CSCE","ECHE","ECIV","ELCT","EMCH","MATH"};	
 	public static String DEPT="DEPT";
 	public static String INST="INST";
@@ -35,8 +36,8 @@ public class ReadCSVFile {
 	public Map<String, List<String []>> readAllFiles() throws IOException{		
 		//Initilization to read CSV.
 		Map<String, List<String[]>> csvValues = new TreeMap<String, List<String[]>>();
-		for (String file : files){
-			InputStream is = resourceLoader.getResource("classpath:"+file+".csv").getInputStream();
+		for (String file : getInputFileNames()){
+			InputStream is = getInputFileStream(file);
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));	
 			br.readLine(); // Skipping header line	
 			//reading all lines in CSV file and extract each attribute
@@ -65,6 +66,16 @@ public class ReadCSVFile {
 		     br.close(); // close the buffer reader
 		}
    		 return csvValues; // Return list of all section objects. 
+	}
+
+	public InputStream getInputFileStream(String file) throws IOException {
+		Resource resource = resourceLoader.getResource("classpath:"+file+".csv");
+		InputStream is = resource.getInputStream();
+		return is;
+	}
+	
+	public String [] getInputFileNames() {
+		return this.files;
 	}
 	
 	public List<String []> getCoursesByWhere(String where, String value) throws IOException{		
