@@ -1,0 +1,34 @@
+<h3>Find By Department</h3>
+<div style="width: 300px;">
+	<form (ngSubmit)="onSubmit()">
+		<div class="form-group">
+			 <label>Department</label>
+		      <select [(ngModel)]="dept" name="Select dept" (change)="deptOnChange()" class="ui fluid search selection dropdown"> 
+		        <option *ngFor="let n of lDep" [value]="n">{{n}}</option>
+		      </select>
+		      <br/>
+		      <label>Instructor</label>
+		      <select [(ngModel)]="inst" name="Select inst" class="ui fluid search selection dropdown"> 
+		        <option [value]=""></option>
+		        <option *ngFor="let n of lInst" [value]="n">{{n}}</option>
+		      </select>
+		      <br/>
+		      <button type="submit" class="btn btn-success">Submit</button>
+		</div>
+	</form>
+</div>
+<br/>
+<div style="width: 600px;">
+	<div>
+		{{summary.title}}
+	</div>
+	<div>
+		<label>Number of sections: </label> {{summary.numberOfSection}}
+	</div>
+	<div>
+		<label>Number of students: </label> {{summary.numberOfStudent}}
+	</div>	
+	<div>
+		<label>FTE: </label> {{summary.fte}}
+	</div>
+</div>
