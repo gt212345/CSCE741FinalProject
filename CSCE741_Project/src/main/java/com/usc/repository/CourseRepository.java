@@ -15,6 +15,10 @@ import com.usc.model.Course;
 public interface CourseRepository extends JpaRepository<Course, Long> {
 		String instQuery= "Select c from Course c inner join c.sections s "
 				+ "inner join s.sectionDetails d where instructor=:instructor";
+		
+		String instDisQuery= "Select distinct d.instructor from Course c inner join c.sections s "
+				+ "inner join s.sectionDetails d where department=:dept";
+		
 		String deptQuery= "Select c from Course c where department=:dept";
 
 		String distDeptQuery = "Select distinct c.department from Course c"; 
@@ -22,10 +26,12 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 		@Query(distDeptQuery)
 		public List<String> findDistinctByDepartment();
 		
+		@Query(instDisQuery)
+		public List<String> findDistinctInstByDep(@Param("dept") String dept);
+		
 		@Query(instQuery)
 		public List<Course> getCoursesByInst(@Param("instructor") String instructor);
 		
 		@Query(deptQuery)
 		public List<Course> getCoursesByDept(@Param("dept") String dept);
 }
-

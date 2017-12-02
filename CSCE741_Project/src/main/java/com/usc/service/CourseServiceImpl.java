@@ -13,8 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.usc.ReadCSVFile;
-import com.usc.dto.DepartmentResponseDto;
-import com.usc.dto.InstructorResponseDto;
+import com.usc.dto.ResponseDto;
 import com.usc.model.Course;
 import com.usc.model.Section;
 import com.usc.model.SectionDetail;
@@ -49,6 +48,14 @@ public class CourseServiceImpl implements CourseService{
 	}
 	public boolean readCSVFile(String filename){
 		return false;
+	}
+	
+	public List<String> getAllDep(){
+		return courseRepository.findDistinctByDepartment();
+	}
+	
+	public List<String> getInstsByDep(String dept){
+		return courseRepository.findDistinctInstByDep(dept);
 	}
 	
 	public List<Course> getAllCourses(){
@@ -123,7 +130,7 @@ public class CourseServiceImpl implements CourseService{
 		return courseList;
 	}
 	
-	public InstructorResponseDto getCoursesByInst(String inst){
+	public ResponseDto getCoursesByInst(String inst){
 		List<Section> sectionList = sectionRepository.getSectionByInst(inst);
 		List<Course> courseList = courseRepository.getCoursesByInst(inst);
 		int numberOfSection = 0;
@@ -142,8 +149,8 @@ public class CourseServiceImpl implements CourseService{
 			numberOfStudent+=section.getActualSeatRes();
 		}
 		if (sectionList.size()>0){
-			InstructorResponseDto dto = new InstructorResponseDto();
-			dto.setInstructor(inst);
+			ResponseDto dto = new ResponseDto();
+			dto.setTitle(inst);
 			dto.setNumberOfSection(numberOfSection);
 			dto.setNumberOfStudent(numberOfStudent);
 			dto.setFTE((numberOfStudent*numberOfCreditHours)/15);
@@ -153,7 +160,7 @@ public class CourseServiceImpl implements CourseService{
 			return null;
 	}
 	
-	public DepartmentResponseDto getCoursesByDept(String dept){
+	public ResponseDto getCoursesByDept(String dept){
 		List<Course> courseList = courseRepository.getCoursesByDept(dept);
 		
 		int numberOfSection = 0;
@@ -172,8 +179,8 @@ public class CourseServiceImpl implements CourseService{
 		}
 		
 		if (courseList.size()>0){
-			DepartmentResponseDto dto = new DepartmentResponseDto();
-			dto.setDepartment(dept);
+			ResponseDto dto = new ResponseDto();
+			dto.setTitle(dept);
 			dto.setNumberOfSection(numberOfSection);
 			dto.setNumberOfStudent(numberOfStudent);
 			dto.setFTE((numberOfStudent*numberOfCreditHours)/15);
@@ -183,22 +190,22 @@ public class CourseServiceImpl implements CourseService{
 			return null;
 	}
 		
-	public List<InstructorResponseDto> getInstSummary(){
+	public List<ResponseDto> getInstSummary(){
 		List<String> listOfInstructor = sectionDetailRepository.findDistinctByInstructor();
-		List <InstructorResponseDto> list = new ArrayList<InstructorResponseDto>();
+		List <ResponseDto> list = new ArrayList<ResponseDto>();
 		for (int i=0; i<listOfInstructor.size(); i++){
-			InstructorResponseDto dto = getCoursesByInst(listOfInstructor.get(i));
+			ResponseDto dto = getCoursesByInst(listOfInstructor.get(i));
 			list.add(dto);
 		}
 	
 		return list;
 	}
 	
-	public List<DepartmentResponseDto> getDeptSummary(){
+	public List<ResponseDto> getDeptSummary(){
 		List<String> departmentList = courseRepository.findDistinctByDepartment();
-		List <DepartmentResponseDto> list = new ArrayList<DepartmentResponseDto>();
+		List <ResponseDto> list = new ArrayList<ResponseDto>();
 		for (int i=0; i<departmentList.size(); i++){
-			DepartmentResponseDto dto = getCoursesByDept(departmentList.get(i));
+			ResponseDto dto = getCoursesByDept(departmentList.get(i));
 			list.add(dto);
 		}
 		return list;
