@@ -35,17 +35,23 @@ public class CourseServiceImpl implements CourseService{
 	@Autowired
 	private SectionDetailRepository sectionDetailRepository;
 	
-	public boolean readAllCSVFiles() throws IOException{
-		try{
-			List<Course> courseList = convertLinesToCourses(readCSVFile.readAllFiles());
-			for (Course course:courseList)
-				courseRepository.save(course);		
+	public boolean readAllCSVFiles(boolean scrape) throws IOException {
+		try {
+			List<Course> courseList = null;
+			if (scrape) {
+				courseList = convertLinesToCourses(readCSVFile.readAllFilesScrape());
+			} else {
+				courseList = convertLinesToCourses(readCSVFile.readAllFiles());
+			}
+			for (Course course : courseList)
+				courseRepository.save(course);
 			return true;
-		}catch(IOException ex){
+		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
 		return false;
 	}
+	
 	public boolean readCSVFile(String filename){
 		return false;
 	}
@@ -100,9 +106,23 @@ public class CourseServiceImpl implements CourseService{
 					course.setSemester("FALL");
 					section.setSectionCRN(Long.parseLong(sectionLine[1]));
 					section.setSectionNumber(sectionLine[4]);
-					section.setCapacity(Short.parseShort(sectionLine[11]));
-					section.setActualSeatRes(Short.parseShort(sectionLine[12]));
-					section.setRemainingSeat(Short.parseShort(sectionLine[13]));
+					if (sectionLine[11].equals("TBA") || !sectionLine[11].equals("")) {
+						section.setCapacity((short) 0);
+					} else {
+						section.setCapacity(Short.parseShort(sectionLine[11]));
+					}
+
+					if (sectionLine[12].equals("TBA") || sectionLine[12].equals("")) {
+						section.setActualSeatRes((short) 0);
+					} else {
+						section.setActualSeatRes(Short.parseShort(sectionLine[12]));
+					}
+
+					if (sectionLine[13].equals("TBA") || sectionLine[13].equals("")) {
+						section.setRemainingSeat((short) 0);
+					} else {					
+						section.setRemainingSeat(Short.parseShort(sectionLine[13]));
+					}
 				}		
 				SectionDetail sectionDetail= new SectionDetail();
 				sectionDetail.setDays(sectionLine[9].toString());
