@@ -26,6 +26,11 @@ public class SectionController {
 	@Autowired
 	private CourseService courseService;
 
+	@PostConstruct
+	public void initService() throws Exception {
+		courseService.readAllCSVFiles();
+	}
+	
 	@RequestMapping(value = "/ReadAll", method = RequestMethod.GET)
 	public ResponseEntity<List<Course>> getAll() throws IOException {
 		List<Course> courseList = courseService.getAllCourses();
@@ -69,15 +74,18 @@ public class SectionController {
 		return ResponseEntity.ok(dtoList);
 	}
 
-	@RequestMapping(value = "/scrapeSections/{u}/{p}")
-	public void scrape(@PathVariable String u, @PathVariable String p) {
+	@RequestMapping(value = "/scrapeSections/{u}/{p}",method = RequestMethod.GET)
+	public ResponseEntity<String> scrape(@PathVariable String u, @PathVariable String p) {
+		System.out.println("Scrap Data");
 		WebScrapper ws = new WebScrapper();
 		ws.scrape(u, p);
 
 		try {
 			courseService.readAllCSVFiles();
+			return ResponseEntity.ok("Data is currently scrapping");
 		} catch (IOException e) {
 			e.printStackTrace();
+			return ResponseEntity.badRequest().body("Data scrapping is not currently available");
 		}
 	}
 }

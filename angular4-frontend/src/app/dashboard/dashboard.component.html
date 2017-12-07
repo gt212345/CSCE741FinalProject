@@ -1,24 +1,28 @@
-<h3>Find By Department</h3>
-<div style="width: 300px;">
+<div class="divElement">
+<h4>Department and Faculty Statistics</h4>
 	<form (ngSubmit)="onSubmit()">
-		<div class="form-group">
-			 <label>Department</label>
-		      <select [(ngModel)]="dept" name="Select dept" (change)="deptOnChange()" class="ui fluid search selection dropdown"> 
+		<div class="form-group" >
+		    <div class="form-group">
+			 <label for="soflow1"> Select Department</label>
+			 <br/>
+		      <select id="soflow1" [(ngModel)]="dept" name="Select dept" (change)="deptOnChange()" class="ui fluid search selection dropdown"> 
 		        <option *ngFor="let n of lDep" [value]="n">{{n}}</option>
 		      </select>
-		      <br/>
-		      <label>Instructor</label>
-		      <select [(ngModel)]="inst" name="Select inst" class="ui fluid search selection dropdown"> 
+		      </div>
+		     <div class="form-group">
+		      <label>Select Instructor</label><br/>
+		      <select id="soflow2"[(ngModel)]="inst" name="Select inst" class="ui fluid search selection dropdown"> 
 		        <option [value]=""></option>
 		        <option *ngFor="let n of lInst" [value]="n">{{n}}</option>
 		      </select>
+		      </div>
 		      <br/>
-		      <button type="submit" class="btn btn-success">Submit</button>
+		     <div class="input">
+					<input type="submit" value="Search">
+				</div>
 		</div>
 	</form>
-</div>
 <br/>
-<div style="width: 600px;">
 	<div>
 		{{summary.title}}
 	</div>

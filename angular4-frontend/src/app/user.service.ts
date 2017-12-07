@@ -23,6 +23,7 @@ export class UserService {
   }
 
   getUserLoggedIn() {
+  	console.log("Logged IN user:"+this.isUserLoggedIn);
   	return this.isUserLoggedIn;
   }
   

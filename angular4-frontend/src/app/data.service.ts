@@ -12,6 +12,13 @@ export class DataService {
 
   constructor(private http: Http) {}
 
+   scrapData(username: string, password:string) {   		
+      return this.http.get('scrapeSections'+'/'+username+'/'+password)
+       .toPromise()
+       .then(response => response.json() as string)
+       .catch(this.handleError);
+  }
+
   // Get all customers
   getAllDep(): Promise<string[]> {
   	console.log("Data Service getAllDep")
