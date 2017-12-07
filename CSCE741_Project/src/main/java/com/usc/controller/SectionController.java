@@ -79,13 +79,26 @@ public class SectionController {
 		System.out.println("Scrap Data");
 		WebScrapper ws = new WebScrapper();
 		ws.scrape(u, p);
-
+		
+		//return ResponseEntity.ok("Data is currently scrapping. File Created");
 		try {
-			courseService.readAllCSVFiles();
+			courseService.readAllCSVFiles(true);
 			return ResponseEntity.ok("Data is currently scrapping");
 		} catch (IOException e) {
 			e.printStackTrace();
 			return ResponseEntity.badRequest().body("Data scrapping is not currently available");
+		}
+	}
+	
+	@RequestMapping(value = "/readScrape",method = RequestMethod.GET)
+	public  void readScrape() {
+		System.out.println("Read file");
+		
+		try {
+			courseService.readAllCSVFiles(true);
+			
+		} catch (IOException e) {
+			e.printStackTrace();			
 		}
 	}
 }
