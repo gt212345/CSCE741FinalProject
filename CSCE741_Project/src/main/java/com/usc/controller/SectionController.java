@@ -26,10 +26,10 @@ public class SectionController {
 	@Autowired
 	private CourseService courseService;
 
-	@PostConstruct
-	public void initService() throws Exception {
-		courseService.readAllCSVFiles();
-	}
+	//@PostConstruct
+	//public void initService() throws Exception {
+	//	courseService.readAllCSVFiles();
+	//}
 	
 	@RequestMapping(value = "/ReadAll", method = RequestMethod.GET)
 	public ResponseEntity<List<Course>> getAll() throws IOException {
