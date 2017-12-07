@@ -35,6 +35,43 @@ public class ReadCSVFile {
 	private String filePath = "C:\\Users\\Hassan\\Documents\\Scrape\\sections.txt";
 	public static String DEPT = "DEPT";
 	public static String INST = "INST";
+	
+	// Method to use to read scrape file
+	public Map<String, List<String[]>> readAllFilesScrape() throws IOException {
+		// Initilization to read CSV.
+		Map<String, List<String[]>> csvValues = new TreeMap<String, List<String[]>>();
+		//for (String file : getInputFileNames()) {
+			//InputStream is = getInputFileStream(filePath);
+			FileReader fileReader = new FileReader(filePath);
+			BufferedReader br = new BufferedReader(fileReader);
+			//br.readLine(); // Skipping header line
+			// reading all lines in CSV file and extract each attribute
+			for (String next, line = br.readLine(); line != null; line = next) {
+				next = br.readLine();
+				String[] p = line.replaceAll("\\(P\\)", "").replaceAll("\\s+(?=[,])", "").split(",");
+				List<String[]> sectionValues = new ArrayList<String[]>();
+				String courseValue = p[2].toString() + " " + p[3].toString() + "-" + p[1].toString();
+				sectionValues.add(p);
+
+				if (next != null) {
+					String[] p2 = null;
+					do {
+						p2 = next.replaceAll("\\s+(?=[,])", "").replaceAll("\\(P\\)", "").replaceAll("\\s+(?=[,])", "")
+								.split(",");
+						if (!p2[2].equals(""))
+							break;
+						String next2;
+						sectionValues.add(p2);
+						next = br.readLine();
+					} while (next != null);
+					csvValues.put(courseValue, sectionValues);
+				} else
+					csvValues.put(courseValue, sectionValues);
+			}
+			br.close(); // close the buffer reader
+		//}
+		return csvValues; // Return list of all section objects.
+	}
 
 	public Map<String, List<String[]>> readAllFiles() throws IOException {
 		// Initilization to read CSV.
@@ -78,10 +115,6 @@ public class ReadCSVFile {
 	}
 
 	public String[] getInputFileNames() {
-		// Clean list of files
-		files = null;
-		files[0] = filePath;
-
 		return this.files;
 	}
 
