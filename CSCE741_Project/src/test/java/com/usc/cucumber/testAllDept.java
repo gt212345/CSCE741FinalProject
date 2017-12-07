@@ -26,6 +26,7 @@ public class testAllDept {
 	@Then("webpage display correct department information")
 	public void message_displayed_Login_Successfully() throws Throwable {
 		System.out.println("[\"EMCH\",\"ELCT\",\"MATH\",\"CSCE\",\"ECHE\",\"ECIV\",\"BMEN\"]");
+		driver.quit();
 	}
 
 }
