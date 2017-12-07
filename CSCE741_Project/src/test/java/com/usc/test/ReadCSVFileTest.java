@@ -1,24 +1,17 @@
 package com.usc.test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.mockito.Mockito;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-
 import com.usc.ReadCSVFile;
 
 class ReadCSVFileTest {

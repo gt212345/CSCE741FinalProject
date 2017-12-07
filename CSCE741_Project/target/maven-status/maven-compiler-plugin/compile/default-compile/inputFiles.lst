@@ -1,0 +1,12 @@
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/model/Course.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/service/CourseService.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/repository/SectionDetailRepository.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/service/CourseServiceImpl.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/dto/ResponseDto.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/ReadCSVFile.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/model/SectionDetail.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/repository/SectionRepository.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/controller/SectionController.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/model/Section.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/App.java
+/Users/heiruwu/Documents/projects/csce741/CSCE741/CSCE741_Project/src/main/java/com/usc/repository/CourseRepository.java
