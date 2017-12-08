@@ -27,7 +27,7 @@ public class CourseServiceImpl implements CourseService{
 	private ReadCSVFile readCSVFile;
 	
 	@Autowired
-	private CourseRepository courseRepository;
+	public CourseRepository courseRepository;
 	
 	@Autowired
 	private SectionRepository sectionRepository;
