@@ -101,4 +101,12 @@ public class SectionController {
 			e.printStackTrace();			
 		}
 	}
+	public CourseService getCourseService() {
+		return courseService;
+	}
+
+	public void setCourseService(CourseService courseService) {
+		this.courseService = courseService;
+	}
+	
 }
