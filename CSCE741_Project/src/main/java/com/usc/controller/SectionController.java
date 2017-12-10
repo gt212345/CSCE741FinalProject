@@ -76,29 +76,30 @@ public class SectionController {
 
 	@RequestMapping(value = "/scrapeSections/{u}/{p}",method = RequestMethod.GET)
 	public ResponseEntity<String> scrape(@PathVariable String u, @PathVariable String p) {
-		System.out.println("Scrap Data");
+		System.out.println("Scrape Data");
 		WebScrapper ws = new WebScrapper();
 		ws.scrape(u, p);
 		
 		//return ResponseEntity.ok("Data is currently scrapping. File Created");
 		try {
-			courseService.readAllCSVFiles(true);
+			//courseService.readAllCSVFiles(true);
 			return ResponseEntity.ok("Data is currently scrapping");
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.badRequest().body("Data scrapping is not currently available");
 		}
 	}
 	
 	@RequestMapping(value = "/readScrape",method = RequestMethod.GET)
-	public  void readScrape() {
+	public ResponseEntity<String> readScrape() {
 		System.out.println("Read file");
 		
 		try {
 			courseService.readAllCSVFiles(true);
-			
+			return ResponseEntity.ok("Data Saved DB");
 		} catch (IOException e) {
-			e.printStackTrace();			
+			e.printStackTrace();
+			return ResponseEntity.ok("Saving Data Error");
 		}
 	}
 	public CourseService getCourseService() {
