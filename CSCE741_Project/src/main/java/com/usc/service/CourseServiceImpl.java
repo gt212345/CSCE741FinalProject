@@ -97,7 +97,7 @@ public class CourseServiceImpl implements CourseService{
 					course = new Course();
 					section = new Section();
 					course.setDepartment(sectionLine[2].toString());
-					course.setCourseNumber(sectionLine[3].toString());
+					course.setCourseNumber(sectionLine[3].toString()+sectionLine[2].toString());
 					course.setCampus(sectionLine[5].toString());
 					course.setCredit(sectionLine[6]);
 					course.setTerm(sectionLine[7].toString());
