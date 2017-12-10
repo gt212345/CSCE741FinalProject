@@ -7,8 +7,11 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "Feature"
-		,glue = {"com.usc.cucumber"}
+		format = {"json:cucmberOutput/cucumber.json", "html:cucumber.html"},
+		features = "Feature",
+		plugin = "pretty",
+		//tags = {"@url", "@angular"},
+		glue = {"com.usc.cucumber"}
 		)
 public class cucmberTestRunner {
 

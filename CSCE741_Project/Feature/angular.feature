@@ -1,4 +1,4 @@
-#Author: heiru@email.sc.edu
+#Author: your.email@your.domain.com
 #Keywords Summary :
 #Feature: List of scenarios.
 #Scenario: Business rule through list of steps with arguments.
@@ -16,17 +16,19 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag
-Feature: Get all department information
+@angular
+Feature: Angular behavior
   
-  As a user of the system, I should be able to look into the information of all department
+  I want to tes the angular UI behavior
 
-  @tag1
-  Scenario Outline: Successful get all department information
-    Given User is on homepage
-    When User click the get all department button <button>
-    Then webpage display correct department information <value>
+  @angular
+  Scenario Outline: Test login
+    Given I want log in to the system
+    When I am on the home page
+    Then I try to log in with <username> and <password>
+    And The system return correct page with url <url>
 
     Examples: 
-      | button           | value                                              |
-      | getAllDeptButton | ["EMCH","ELCT","MATH","CSCE","ECHE","ECIV","BMEN"] |
+      | username | password | url                               |
+      | "admin"  | "admin"  | "http://localhost:4200/dashboard" |
+      | "abd"    | "abd"    | "http://localhost:4200/dashboard" |
