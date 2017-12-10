@@ -13,7 +13,10 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
+/*
+ * Created by Heiru Wu
+ * 2017/12/03
+ */
 public class CucumberTest {
 	WebDriver driver;
 	String url = "";
@@ -138,7 +141,7 @@ public class CucumberTest {
 			System.out.println(url);
 		} else {
 			driver.quit();
-			fail();
+			fail("The system is not login, instead the url is" + url);
 		}
 	}
 }
