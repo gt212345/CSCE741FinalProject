@@ -10,7 +10,7 @@ import com.usc.model.Course;
 
  
 public interface CourseService {
-	public boolean readAllCSVFiles() throws IOException;
+	public boolean readAllCSVFiles(boolean scrape) throws IOException;
 	public boolean readCSVFile(String filename);
 	public List<String> getAllDep();
 	public List<String> getInstsByDep(String dept);

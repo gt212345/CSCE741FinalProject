@@ -184,9 +184,11 @@ public class SectionScrapper {
 
 	public String toString() {
 
-		return this.crn + ";" + this.subj + ";" + this.course + ";" + this.sec + ";" + this.campus + ";" + this.cred
-				+ ";" + this.term + ";" + this.title + ";" + this.days + ";" + this.time + ";" + this.capacity + ";"
-				+ this.actual + ";" + this.remaing + ";" + this.instructor + ";" + this.date + ";" + this.location + ";"
+		String sep = ",";
+		
+		return this.crn + sep + this.subj + sep + this.course + sep + this.sec + sep + this.campus + sep + this.cred
+				+ sep + this.term + sep + this.title + sep + this.days + sep + this.time + sep + this.capacity + sep
+				+ this.actual + sep + this.remaing + sep + this.instructor + sep + this.date + sep + this.location + sep
 				+ this.attribute;
 	}
 

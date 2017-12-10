@@ -93,7 +93,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 192183,
+  "duration": 158957,
   "status": "passed"
 });
 formatter.scenario({
@@ -141,14 +141,14 @@ formatter.match({
   "location": "CucumberTest.i_want_log_in_to_the_system()"
 });
 formatter.result({
-  "duration": 7948543690,
+  "duration": 8319110001,
   "status": "passed"
 });
 formatter.match({
   "location": "CucumberTest.i_am_on_the_home_page()"
 });
 formatter.result({
-  "duration": 886268423,
+  "duration": 937971139,
   "status": "passed"
 });
 formatter.match({
@@ -165,7 +165,7 @@ formatter.match({
   "location": "CucumberTest.i_try_to_log_in_with_admin_and_admin(String,String)"
 });
 formatter.result({
-  "duration": 457829493,
+  "duration": 575233535,
   "status": "passed"
 });
 formatter.match({
@@ -178,11 +178,11 @@ formatter.match({
   "location": "CucumberTest.the_system_return_correct_page_with_url(String)"
 });
 formatter.result({
-  "duration": 15612440,
+  "duration": 32093159,
   "status": "passed"
 });
 formatter.before({
-  "duration": 39460,
+  "duration": 34345,
   "status": "passed"
 });
 formatter.scenario({
@@ -230,14 +230,14 @@ formatter.match({
   "location": "CucumberTest.i_want_log_in_to_the_system()"
 });
 formatter.result({
-  "duration": 1635119298,
+  "duration": 1848164827,
   "status": "passed"
 });
 formatter.match({
   "location": "CucumberTest.i_am_on_the_home_page()"
 });
 formatter.result({
-  "duration": 880447759,
+  "duration": 924798005,
   "status": "passed"
 });
 formatter.match({
@@ -254,7 +254,7 @@ formatter.match({
   "location": "CucumberTest.i_try_to_log_in_with_admin_and_admin(String,String)"
 });
 formatter.result({
-  "duration": 274060749,
+  "duration": 373586877,
   "status": "passed"
 });
 formatter.match({
@@ -267,7 +267,7 @@ formatter.match({
   "location": "CucumberTest.the_system_return_correct_page_with_url(String)"
 });
 formatter.result({
-  "duration": 214540640,
+  "duration": 260972142,
   "error_message": "java.lang.AssertionError: The system is not login, instead the url ishttp://localhost:4200/\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat com.usc.cucumber.CucumberTest.the_system_return_correct_page_with_url(CucumberTest.java:144)\n\tat ✽.And The system return correct page with url \"http://localhost:4200/dashboard\"(angular.feature:13)\n",
   "status": "failed"
 });
@@ -348,7 +348,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 34269,
+  "duration": 163305,
   "status": "passed"
 });
 formatter.scenario({
@@ -387,14 +387,14 @@ formatter.match({
   "location": "CucumberTest.user_is_on_homepage()"
 });
 formatter.result({
-  "duration": 2598287616,
+  "duration": 2609217051,
   "status": "passed"
 });
 formatter.match({
   "location": "CucumberTest.user_click_the_get_all_department_button()"
 });
 formatter.result({
-  "duration": 186525663,
+  "duration": 196055830,
   "status": "passed"
 });
 formatter.match({
@@ -433,7 +433,7 @@ formatter.match({
 formatter.write("tmpEMCHELCTMATHCSCEECHEECIVBMEN");
 formatter.write("argEMCHELCTMATHCSCEECHEECIVBMEN");
 formatter.result({
-  "duration": 334551480,
+  "duration": 291706062,
   "status": "passed"
 });
 formatter.scenarioOutline({
@@ -504,7 +504,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 35259,
+  "duration": 29262,
   "status": "passed"
 });
 formatter.scenario({
@@ -551,14 +551,14 @@ formatter.match({
   "location": "CucumberTest.user_is_on_homepage()"
 });
 formatter.result({
-  "duration": 2619792756,
+  "duration": 2712881996,
   "status": "passed"
 });
 formatter.match({
   "location": "CucumberTest.user_click_the_get_all_instructor_for_a_specfic_department_button()"
 });
 formatter.result({
-  "duration": 30926,
+  "duration": 27381,
   "status": "passed"
 });
 formatter.match({
@@ -571,7 +571,7 @@ formatter.match({
   "location": "CucumberTest.the_system_ask_for_department_input(String)"
 });
 formatter.result({
-  "duration": 254126681,
+  "duration": 246325193,
   "status": "passed"
 });
 formatter.match({
@@ -688,11 +688,11 @@ formatter.match({
   "location": "CucumberTest.webpage_display_correct_instructor_information(String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String,String)"
 });
 formatter.result({
-  "duration": 282417204,
+  "duration": 406365317,
   "status": "passed"
 });
 formatter.before({
-  "duration": 30078,
+  "duration": 21920,
   "status": "passed"
 });
 formatter.scenario({
@@ -739,14 +739,14 @@ formatter.match({
   "location": "CucumberTest.user_is_on_homepage()"
 });
 formatter.result({
-  "duration": 2412845121,
+  "duration": 2517652926,
   "status": "passed"
 });
 formatter.match({
   "location": "CucumberTest.user_click_the_get_all_instructor_for_a_specfic_department_button()"
 });
 formatter.result({
-  "duration": 29622,
+  "duration": 63162,
   "status": "passed"
 });
 formatter.match({
@@ -759,7 +759,7 @@ formatter.match({
   "location": "CucumberTest.the_system_ask_for_department_input(String)"
 });
 formatter.result({
-  "duration": 156038805,
+  "duration": 113340775,
   "status": "passed"
 });
 formatter.match({
@@ -824,7 +824,7 @@ formatter.match({
   "location": "CucumberTest.webpage_display_correct_instructor_information(String,String,String,String,String,String,String,String,String,String,String,String,String,String)"
 });
 formatter.result({
-  "duration": 387792915,
+  "duration": 318970530,
   "status": "passed"
 });
 });
