@@ -184,7 +184,8 @@ public class SectionScrapper {
 
 	public String toString() {
 
-		String sep = ",";
+		//String sep = ",";
+		String sep = WebScrapper.sep;
 		
 		return this.crn + sep + this.subj + sep + this.course + sep + this.sec + sep + this.campus + sep + this.cred
 				+ sep + this.term + sep + this.title + sep + this.days + sep + this.time + sep + this.capacity + sep
