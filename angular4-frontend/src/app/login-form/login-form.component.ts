@@ -23,8 +23,6 @@ export class LoginFormComponent implements OnInit {
     console.log('usernam : '+username);
   	if(username == 'admin' && password == 'admin') {
      	this.user.setUserLoggedIn();
-     	console.log('Yay!');
-     	this.dataService.scrapData('bla', 'bla');
   		this.router.navigate(['dashboard']);
   	}
   }
