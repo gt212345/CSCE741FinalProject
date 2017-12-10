@@ -19,15 +19,18 @@ public class WebScrapper {
 	private static List<String> subList = new ArrayList<>();
 
 	// Set File Path
-	private String filePath = "..\\sections.csv";
-	private String driverPath = "..\\chromedriver.exe";
+	private String filePath = "D:\\sections.csv";
+	private String driverPath = "D:\\chromedriver.exe";
+
+	public static String sep = ",";
 
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		WebScrapper ws = new WebScrapper();
 
 		campusList.add("USC Columbia");
-		//subList.add("CSCE - Comp Sci & Comp Engr");
-		subList.add("CHIN - Chinese");
+		// subList.add("CSCE - Comp Sci & Comp Engr");
+		subList.add("AFAM - African Amer Studies");
+		//subList.add("ACCT - Accounting");
 
 		String u = "";
 		String pw = "";
@@ -42,7 +45,7 @@ public class WebScrapper {
 
 		PrintWriter writer = null;
 		WebDriver driver = null;
-		
+
 		boolean newSub = false;
 
 		try {
@@ -64,7 +67,8 @@ public class WebScrapper {
 			submit.click();
 
 			driver.switchTo().frame("duo_iframe");
-			// List<WebElement> duoButton = driver.findElements(By.className("button"));
+			// List<WebElement> duoButton =
+			// driver.findElements(By.className("button"));
 			WebElement bt = driver.findElement(By.xpath("//*[@id='login-form']/fieldset[2]/div[1]/button"));
 			// *[@id="login-form"]/fieldset[2]/div[1]/button
 			bt.click();
@@ -80,32 +84,23 @@ public class WebScrapper {
 			Select dropdown = new Select(driver.findElement(By.id("term_input_id")));
 			dropdown.selectByVisibleText("Spring 2018");
 			driver.findElement(By.id("id____UID7")).click();
-			
-			//WebScrapper.populate();
-			campusList.add("USC Columbia");
-			//subList.add("CSCE - Comp Sci & Comp Engr");
-			subList.add("AFYS - First Year Seminar");
-			subList.add("CHIN - Chinese");
-			subList.add("ARAB - Arabic");
-			subList.add("ANES - Anesthesiology");
+
+			// WebScrapper.populate();
+			// campusList.add("USC Columbia");
+			// subList.add("CSCE - Comp Sci & Comp Engr");
+			// subList.add("AFYS - First Year Seminar");
+			// subList.add("CHIN - Chinese");
+			// subList.add("ARAB - Arabic");
+			// subList.add("ANES - Anesthesiology");
 
 			for (String campus : campusList) {
-				
-				String lastCampus = campus;
-
-				System.out.println(campus);
-
 				for (String sub : subList) {
-					
-//					if(newSub) {
-//						driver.findElement(By.xpath("//*[@id=\"camp_id\"]")).sendKeys(campus);
-//						driver.findElement(By.xpath("//*[@id=\"subj_id\"]")).sendKeys(sub);
-//						driver.findElement(By.id("id____UID5")).click();
-//					}
-
 					System.out.println(sub);
-					
-					String lastSub = sub;
+					// if(newSub) {
+					// driver.findElement(By.xpath("//*[@id=\"camp_id\"]")).sendKeys(campus);
+					// driver.findElement(By.xpath("//*[@id=\"subj_id\"]")).sendKeys(sub);
+					// driver.findElement(By.id("id____UID5")).click();
+					// }
 
 					driver.findElement(By.xpath("//*[@id=\"camp_id\"]")).sendKeys(campus);
 					driver.findElement(By.xpath("//*[@id=\"subj_id\"]")).sendKeys(sub);
@@ -124,7 +119,7 @@ public class WebScrapper {
 						String id = b.getAttribute("id");
 
 						System.out.println(id);
-						
+
 						if (allButtons.size() <= 4) {
 							driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 							driver.findElement(By.xpath("//*[@id=\"crumb\"]/div[1]/a")).click();
@@ -153,16 +148,24 @@ public class WebScrapper {
 							List<WebElement> cells = row.findElements(By.tagName("td"));
 
 							String line = "";
-							String sep = ",";
-
+							int ic1 = 0;
 							for (WebElement cell : cells) {
-								line += cell.getText() + sep;
+								
+								if (ic1 == 10) {	
+									if(cell.getText().length() < 3 && !cell.getText().equals("TBA")){
+										line += " " + sep;
+									}								
+								}
+								
+								ic1++;
+								line += cell.getText().replace(",", " ") + sep;
+
 							}
 
 							if (!line.equals("")) {
-														
-								for(int ic = cells.size(); ic < 18; ic++) {
-									line += " ,";
+
+								for (int ic = cells.size(); ic < 18; ic++) {
+									line += " " + sep;
 								}
 
 								SectionScrapper s = new SectionScrapper();
@@ -173,12 +176,6 @@ public class WebScrapper {
 							}
 
 						}
-						
-						if(!campus.equals(lastCampus)) {
-							System.out.println(campus);
-							System.out.println(lastCampus);
-						}
-						
 
 						driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 						driver.findElement(By.xpath("//*[@id=\"crumb\"]/div[1]/a")).click();
@@ -190,10 +187,10 @@ public class WebScrapper {
 						driver.findElement(By.id("id____UID7")).click();
 
 						driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-						
-						if(allButtons.size() - 4 == buttonsClicked.size()) {
+
+						if (allButtons.size() - 4 == buttonsClicked.size()) {
 							buttonsClicked.clear();
-							//newSub = true;	
+							// newSub = true;
 
 						} else {
 							driver.findElement(By.xpath("//*[@id=\"camp_id\"]")).sendKeys(campus);
@@ -201,7 +198,6 @@ public class WebScrapper {
 							driver.findElement(By.id("id____UID5")).click();
 							newSub = false;
 						}
-						
 
 					}
 
@@ -226,9 +222,9 @@ public class WebScrapper {
 
 		writer.close();
 	}
-	
+
 	private static void populate() {
-		
+
 		campusList.add("USC Columbia");
 		subList.add("ACCT - Accounting");
 		subList.add("AERO - Aerospace Studies");
@@ -414,11 +410,11 @@ public class WebScrapper {
 		subList.add("UNIV - University Experience");
 		subList.add("WGST - Women &amp; Gender Studies");
 
-		
 	}
 
 	private static SectionScrapper addSection(String line) {
-		String[] fields = line.split(",");
+
+		String[] fields = line.split(sep);
 
 		SectionScrapper s = new SectionScrapper();
 		s.setActual(fields[12]);
